@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard | Lab 2</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/main.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Lab 2</strong></a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown" onclick="readNotifications()">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-globe fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <span class="notification-counter" id="noti_count"></span>
+                    </a>
+                    <ul class="scroll-bar dropdown-menu dropdown-alerts" id="notify_list">
+                        <li id="no-messages">
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> No Messages                                   
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Control Panel</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-1 col-md-6"></div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                    <div class="col-xs-9">
+                                        <i class="fa fa-sun-o fa-fw"></i><strong>&nbsp;Light Sensor</strong>
+                                    </div>
+                                    <div class="col-xs-3 text-right toggleMargin">
+                                        <div>
+                                            <input type="checkbox" name="toggleLight" id="toggleLight">
+                                            <label for="toggleLight"></label>
+                                        </div>
+                                    </div>        
+                            </div>    
+                        </div>
+                        <div class="panel-footer panel-info" id="lightSensorData">
+                            <span class="pull-left">Current Light Sensor Data: </span>
+                            <span class="pull-right" id="current_light"></span>
+                            <div class="clearfix"></div>
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6"></div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                    <div class="col-xs-9">
+                                        <i class="fa fa-space-shuttle fa-fw"></i><strong>&nbsp;Proximity Sensor</strong>
+                                    </div>
+                                    <div class="col-xs-3 text-right toggleMargin">
+                                        <div>
+                                            <input type="checkbox" name="toggleProx" id="toggleProx">
+                                            <label for="toggleProx"></label>
+                                        </div>
+                                    </div>        
+                            </div>    
+                        </div>
+                        <div id="proxSensorData">
+                            <div class="panel-footer panel-info">
+                                <span class="pull-left">Closest Object Distance: </span>
+                                <span class="pull-right" id="current_prox"></span>
+                                <div class="clearfix"></div>
+                            </div>    
+                            <div class="panel-footer panel-info">
+                                <span class="pull-left">Current Threshold:</span>
+                                <span class="pull-right" id="current_threshold"></span>
+                                <div class="clearfix"></div>
+                            </div>    
+                            <div class="panel-footer panel-info">
+                                <span class="pull-left">Set Threshold: &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</span>
+                                <input class="col-xs-4" type="text" id="threshold" placeholder="in cm">&nbsp;&nbsp;&nbsp;
+                                <input class="btn-primary" type="submit" value="Set" onclick="setThreshold()">
+                                <div class="clearfix"></div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class ="row spacer">
+                <div class="span4"></div>
+                <div class="span4"></div>
+                <div class="span4"></div>
+            </div>
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <i class="fa fa-area-chart fa-fw"></i> <strong>Data Analytics for Night Proximity Sensor</strong>
+                            
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+
+                            <!-- Show Kibana -->                            
+                            <iframe src="http://52.33.59.166:5601/goto/19a19c09219614976f3bc8ced1114338" height="550" width="1040"></iframe>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->                    
+                </div>
+                <!-- /.col-lg-8 -->
+                
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/app.js"></script>
+
+    <!-- Mosquitto JavaScript -->
+    <script src="../dist/js/mosquitto.js"></script>
+
+    <!-- Main JS -->
+    <script src="../dist/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,5 +1,12 @@
 # Night Proximity Sensor - IoT Full Stack
 
+- An IoT application with a night proximity sensor that operate only in night mode (i.e. low light conditions) and sends a notification to the web UI when an object is closer to the sensor than a set threshold.
+- The device can be controlled (On/Off) from the web UI and has a configurable threshold (set/reset) from the web UI.
+- The data is published using the Mosquitto and Kafka broker and forwarded to the ELK stack for data analysis, where the logstash filters the light sensor data for low light conditions only. 
+- Built a web app that display the light sensor data (all; not just low light) and current distance data in real time and gets notifications when the object crosses the threshold limit set for the sensor which can be changed from the UI. 
+- The web app has the Kibana dashboard embedded onto it and is deployed on AWS EC2 service.
+
+
 -- [Device] Build a night proximity sensor that:
 ● Can send a notification to the web UI when an object is closer to the sensor than a set threshold.
 ● Has a sensor that makes it operate only in night mode (i.e. low light conditions)

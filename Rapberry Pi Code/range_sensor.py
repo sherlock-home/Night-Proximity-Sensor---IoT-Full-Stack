@@ -22,7 +22,7 @@ def on_message(mosq, obj, msg):
 	global THRESHOLD
 	print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
 	if msg.topic == 'PROX_STATUS':
-		PROX_SENSOR = msg.payload
+		PROX_SENSOR = str(msg.payload)
 	if msg.topic == 'SET_THRESHOLD':
 		THRESHOLD = int(msg.payload)
 
